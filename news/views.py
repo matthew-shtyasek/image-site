@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 
+from news.forms import CommentForm
 from news.models import Img
 
 
@@ -10,7 +11,20 @@ def news_views(request):
 
 def news_detail_view(request, img_id):
     detail = get_object_or_404(Img, id=img_id)
+
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            form = CommentForm()
+
+    else:
+        form = CommentForm()
+
     comment = detail.comments.all()
-    context = {'img_detail': detail, 'comments': comment}
+    context = {'img_detail': detail, 'comments': comment, 'form': form}
     return render(request, 'news/details.html', context)
+
+
 
