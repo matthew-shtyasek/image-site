@@ -1,3 +1,8 @@
 from django.shortcuts import render
 
-# Create your views here.
+from news.models import Img
+
+
+def news_views(request):
+    context = {'img': Img.objects.all() }
+    return render(request, 'news/page_1.html', context)
