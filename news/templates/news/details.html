@@ -1,0 +1,9 @@
+{% extends 'root.html' %}
+{% load thumbnail %}
+{% block content %}
+  <div>
+    <h1>{{ img_detail.title }}</h1>
+    <img src="{{img_detail.img.url}}">
+    <p>{{ img_detail.date }}</p>
+  </div>
+{% endblock %}

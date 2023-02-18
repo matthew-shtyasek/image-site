@@ -1,4 +1,15 @@
-{% extend 'root.html' %}
-{%block content%}
+{% extends 'root.html' %}
+{% load thumbnail %}
+{% block content %}
+{% for img in imgs %}
+    <a href="#">
+        <div>
+            <h1>{{ img.title }} </h1>
+            {% thumbnail img.img '500x300' as im %}
+            <img src="{{im.url}}">
+            {% endthumbnail %}
 
+        </div>
+    </a>
+{%endfor%}
 {%endblock%}
