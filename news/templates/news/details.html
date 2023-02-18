@@ -6,4 +6,13 @@
     <img src="{{img_detail.img.url}}">
     <p>{{ img_detail.date }}</p>
   </div>
+  <div>
+    {% for comment in comments %}
+    <div style="border: 1px solid black;">
+      <h3>{{ comment.author }}</h3>
+      <p>{{ comment.text }}</p>
+      <p>{{ comment.date }}</p>
+    </div>
+    {% endfor %}
+  </div>
 {% endblock %}

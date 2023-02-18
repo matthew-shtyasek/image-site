@@ -10,5 +10,7 @@ def news_views(request):
 
 def news_detail_view(request, img_id):
     detail = get_object_or_404(Img, id=img_id)
-    context = {'img_detail': detail}
+    comment = detail.comments.all()
+    context = {'img_detail': detail, 'comments': comment}
     return render(request, 'news/details.html', context)
+
