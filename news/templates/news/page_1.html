@@ -2,7 +2,7 @@
 {% load thumbnail %}
 {% block content %}
 {% for img in imgs %}
-    <a href="#">
+    <a href="{% url 'news:detail' img.id %}">
         <div>
             <h1>{{ img.title }} </h1>
             {% thumbnail img.img '500x300' as im %}
