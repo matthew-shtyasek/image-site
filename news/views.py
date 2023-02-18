@@ -16,7 +16,9 @@ def news_detail_view(request, img_id):
         form = CommentForm(request.POST)
 
         if form.is_valid():
-            form.save()
+            comment = form.save(commit=False)
+            comment.img = img_id
+            comment.save()
             form = CommentForm()
 
     else:
