@@ -32,7 +32,9 @@ def news_detail_view(request, img_id):
 
 def save_image_view(request):
     if request.method == 'POST':
-        form = ImageForm(request.POST)
+        form = ImageForm(data=request.POST,
+                         files=request.FILES) # files добавляется, когда мы передаём файлы
+        print(form.fields)
         if form.is_valid():
             form.save()
             return redirect(reverse('news:img'))  # слева пространство имён, справа  название ссылки
